@@ -1,0 +1,9 @@
+.wrapp.single-pokemon {
+    min-height: 61vh;
+}
+.container.single-pokemon {
+    margin-top: 60px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 6px;
+    padding: 20px 0;
+}

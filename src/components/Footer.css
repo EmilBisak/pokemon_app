@@ -1,0 +1,15 @@
+footer {
+    min-height: calc(50vh - 10px);
+    width: 100%;
+    background-color: #fff;
+    border-top: 10px solid #000;
+    position: relative;
+    z-index: 2;
+  }
+  
+footer small {
+  display: none;
+  line-height: 15vh;
+  font-size: 14px;
+  }
+  
