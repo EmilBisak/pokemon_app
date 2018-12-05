@@ -12,7 +12,7 @@ export const openPokemonStyle = {
     visibility: 'visible',
     opacity: '1',
     transition: 'visibility 0s linear 0s, opacity 300ms',
-    margin: '50px 0',
+    margin: '60px auto',
 }
 
 export const closePokemonStyle = {
@@ -20,5 +20,26 @@ export const closePokemonStyle = {
     opacity: '0',
     transition: 'visibility 0s linear 500ms, opacity 300ms',
     margin: '0',
+    padding: '0',
     height: '0'
+}
+
+export const showPokemonDetails = {
+    border: '1px solid #000',
+    padding: '20px',
+    margin: '0 20px',
+}
+
+export const hidePokemonDetails = {
+    border: 'none',
+    padding: '0',
+    margin: '0',
+}
+
+export const showBtn = {
+    display: "inline-block"
+}
+
+export const hideBtn = {
+    display: "none"
 }

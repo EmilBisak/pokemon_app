@@ -19,6 +19,7 @@
     margin: 5px;
     box-shadow: 0 0 6px;
     cursor: pointer;
+    min-height: 183px;
 }
 .pokemon-holder div:hover{
     background-color: rgba(255, 255, 255, .9);
@@ -35,29 +36,47 @@
     margin-right: 10px;
     background-color: rgba(255, 255, 255, .9);
     cursor: pointer;
+    user-select: none;
 }
 
+@media only screen and (min-width: 1001px) {
+    .container.single-pokemon {
+        width: 700px;
+    }
+}
 @media only screen and (max-width: 1000px) {
-    .pokemon-holder {
+    .container.single-pokemon {
+        width: 700px;
+    }
+    .App-header h1 {
+        transform: translateX(96%)
+    }
+    .pokemon-holder, .pokemon-moves-holder {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 @media only screen and (max-width: 800px) {
-    .pokemon-holder {
-        display: grid;
+    .container.single-pokemon {
+        width: 80%;
+    }
+    .pokemon-holder, .pokemon-moves-holder {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 @media only screen and (max-width: 600px) {
-    .pokemon-holder {
-        display: grid;
+    .pokemon-holder, .pokemon-moves-holder {
         grid-template-columns: 1fr 1fr;
     }
 }
 @media only screen and (max-width: 400px) {
-    .pokemon-holder {
-        display: grid;
+    .container.single-pokemon {
+        width: 90%;
+    }
+    .App-header h1 {
+        visibility: hidden;
+    }
+    .pokemon-holder, .pokemon-moves-holder {
         grid-template-columns: 1fr;
     }
 

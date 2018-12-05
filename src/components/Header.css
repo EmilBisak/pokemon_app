@@ -14,11 +14,14 @@
   }
 
   .App-header h1 {
-    transition: all 1s;
     font-size: 3vw;
     position: absolute;
     left: calc(50%);
+    color: #fff;
+    transition-property: transform;
+    transition-duration: 1s;
   }
+
 
 .logo {
     width: 100px;

@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import './Pokemons.css';
-import { openPokemonStyle, closePokemonStyle } from "../shared/animationStyle";
-import { changePage } from "../store/index";
+import { openPokemonStyle, closePokemonStyle, showBtn, hideBtn } from "../shared/animationStyle";
+import { changePage, previousPage, nextPage } from "../store/index";
 
 
 class Buttons extends Component {
 
     render() {
-        const { pokemons, isClicked, pokemonsPerPage, min, max, changePage } = this.props
+        const { pokemons, isClicked, pokemonsPerPage, min, max, changePage, previousPage, nextPage } = this.props
         const numsOfPages = Math.ceil(pokemons.results.length / pokemonsPerPage);
 
         const makeButtons = () => {
@@ -74,9 +74,11 @@ class Buttons extends Component {
 
         return (
             <div className="buttons-holder" style={isClicked ? openPokemonStyle : closePokemonStyle}>
-                <span className="pagination-btns" onClick={() => changePage(showBtns().previousTenPagesMin, showBtns().previousTenPagesMax)} style={!showBtns().previousText ? { display: "none" } : { display: "inline-block" }}>&#171;{showBtns().previousText}</span>
+                <span className="pagination-btns" onClick={() => changePage(showBtns().previousTenPagesMin, showBtns().previousTenPagesMax)} style={!showBtns().previousText ? hideBtn : showBtn}>&#171;{showBtns().previousText}</span>
+                <span className="pagination-btns" onClick={previousPage} style={!min ? hideBtn : showBtn}>&#171;</span>
                 {showBtns().numberBtns}
-                <span className="pagination-btns" onClick={() => changePage(showBtns().nextTenPagesMin, showBtns().nextTenPagesMax)} style={!showBtns().nextText ? { display: "none" } : { display: "inline-block" }}>{showBtns().nextText}&#187;</span>
+                <span className="pagination-btns" onClick={nextPage} style={max === 930 ? hideBtn : showBtn}>&#187;</span>
+                <span className="pagination-btns" onClick={() => changePage(showBtns().nextTenPagesMin, showBtns().nextTenPagesMax)} style={!showBtns().nextText ? hideBtn : showBtn}>{showBtns().nextText}&#187;</span>
             </div>
         )
     }
@@ -93,7 +95,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    changePage
+    changePage,
+    previousPage,
+    nextPage
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Buttons);

@@ -1,9 +1,74 @@
 .wrapp.single-pokemon {
     min-height: 61vh;
 }
+
 .container.single-pokemon {
-    margin-top: 60px;
+    margin: 60px auto;
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 0 6px;
     padding: 20px 0;
+    box-sizing: border-box
 }
+
+.container.single-pokemon h1 {
+    margin: 0;
+}
+
+.container.single-pokemon h2 {
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #a3a3a3;
+    margin: 20px 0;
+}
+
+.container.single-pokemon h2:hover {
+    background: #cecece;
+    color: #222
+}
+
+.pokemon-moves-holder {
+    transition: all .5s;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 2px;
+}
+
+.pokemon-stats-holder {
+    transition: all .6s;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+}
+
+.pokemon-image-holder {
+    transition: all .6s;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center
+}
+
+.pokemon-image-holder img[alt="sprite"]{
+    width: 130px;
+}
+
+.pokemon-image-holder h4 {
+    margin: 0 0 10px 0;
+}
+
+.pokemon-stats{
+    margin-top: 20px;
+}
+
+.pokemon-stats h2, .pokemon-stats p{
+    margin-top: 0;
+}
+
+.pokemon-types {
+    width: 60px;
+    height: 60px;
+}
+
+

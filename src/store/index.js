@@ -31,6 +31,12 @@ export const reducer = (state = initialState, action) => {
         case 'CHANGE_PAGE':
             return { ...state, min: action.min, max: action.max }
 
+        case 'PREVIOUS_PAGE':
+            return { ...state, min: state.min - 30, max: state.max - 30 }
+
+        case 'NEXT_PAGE':
+            return { ...state, min: state.min + 30, max: state.max + 30 }
+
         default:
             return state
     }
@@ -66,6 +72,14 @@ export const changePage = (min, max) => ({
     type: 'CHANGE_PAGE',
     min,
     max
+})
+
+export const previousPage = () => ({
+    type: 'PREVIOUS_PAGE'
+})
+
+export const nextPage = () => ({
+    type: 'NEXT_PAGE'
 })
 
 export const fetchPokemons = () => dispatch => {

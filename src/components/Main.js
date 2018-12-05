@@ -8,7 +8,7 @@ const Main = () => (
   <main>
     <Switch>
       <Route exact path="/" component={Pokemons} />
-      <Route path="/singlePokemon/:name" component={SinglePokemon} />
+      <Route path="/pokemon/:name" component={SinglePokemon} />
     </Switch>
   </main>
 );

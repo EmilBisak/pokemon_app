@@ -19,10 +19,13 @@ class Pokemons extends Component {
             return null
         }
 
+        console.log(pokemons);
+        
+
         const pokemonsJsx = pokemons.results
             .filter((pokemon, i) => i >= min && i < max)
             .map((pokemon, i) => (
-                <Link key={pokemon.url.split("/")[6]} to={{pathname: `/singlePokemon/${pokemon.url.split("/")[6]}`}}>
+                <Link key={pokemon.url.split("/")[6]} to={{pathname: `/pokemon/${pokemon.name}`}}>
                     <div  onClick={() => fetchSinglePokemon(pokemon.url.split("/")[6])}>
                     <h2>{pokemon.name}</h2>
                     <img src={`assets/pokemon/${pokemon.url.split("/")[6] < 10090 ? pokemon.url.split("/")[6] : 'egg'}.png`} alt="pokemon" />
