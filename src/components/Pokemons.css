@@ -31,12 +31,20 @@
 }
 
 .pagination-btns {
-    padding: 10px 20px;
+    padding: 4px 13px;
     border: 1px solid #cecece;
     margin-right: 10px;
     background-color: rgba(255, 255, 255, .9);
     cursor: pointer;
     user-select: none;
+}
+
+.pagination-btns.hide {
+    display: none;
+}
+
+.pagination-btns.hide:last-of-type {
+    display: inline-block;
 }
 
 @media only screen and (min-width: 1001px) {
@@ -62,6 +70,9 @@
     }
     .pokemon-holder, .pokemon-moves-holder {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+    .pagination-btns.change-ten-pages {
+        display: none !important;
     }
 }
 @media only screen and (max-width: 600px) {
