@@ -14,9 +14,14 @@ class Pokemons extends Component {
 
     render() {
 
-        const { pokemons, isClicked, min, max, fetchSinglePokemon, fetchPokemons, fetchPokemonsByColor, searchByName } = this.props
-        if (!pokemons) {
-            return null
+        const { pokemons, loading, isClicked, min, max, fetchSinglePokemon, fetchPokemons, fetchPokemonsByColor, searchByName } = this.props
+        if (!pokemons || loading) {
+            return <div className="wrapp single-pokemon" style={isClicked ? { minHeight: 'calc(60vh)' } : { minHeight: '0' }}>
+                <div className="container single-pokemon" style={isClicked ? openPokemonStyle : closePokemonStyle}>
+                <img src="assets/icons/loading.gif" />
+                <h4>Loading...</h4>
+                </div>
+            </div>
         }
 
         const makeColorBtns = () => {

@@ -33,13 +33,15 @@ class SinglePokemon extends Component {
 
     }
     render() {
-        const { isClicked, singlePokemon } = this.props;
+        const { isClicked, singlePokemon, loading } = this.props;
         const { isClickedMove, isClickedStat } = this.state;
 
-        if (!singlePokemon) {
+        if (!singlePokemon || loading) {
             return <div className="wrapp single-pokemon" style={isClicked ? { minHeight: 'calc(60vh)' } : { minHeight: '0' }}>
                 <div className="container single-pokemon" style={isClicked ? openPokemonStyle : closePokemonStyle}>
-                    <Link to="/"><h1>Select pokemon</h1></Link>
+                <img src="assets/icons/loading.gif" />
+                <h4>Loading...</h4>
+                    <Link to="/"><h2>Select pokemon</h2></Link>
                 </div>
             </div>
         }
@@ -54,6 +56,7 @@ class SinglePokemon extends Component {
             }
             images = images.filter(img => img !== null);
             return images
+
         }
 
         let pokemonImages = grabPokemonImages();
@@ -125,7 +128,8 @@ class SinglePokemon extends Component {
 const mapStateToProps = state => {
     return {
         isClicked: state.isClicked,
-        singlePokemon: state.singlePokemon
+        singlePokemon: state.singlePokemon,
+        loading: state.loading
     }
 }
 

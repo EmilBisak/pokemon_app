@@ -22,17 +22,17 @@
     box-shadow: 0 0 6px;
     padding: 5px 10px;
     border-radius: 5px;
-    background: #aabdf5;
+    background: #f5daaa;
     margin: 20px 0;
 }
 
 .container.single-pokemon h2:hover {
-    background: #c9d7ff;
+    background: #f1e2c9;
     color: #222
 }
 
 .container.single-pokemon h2:active {
-    background: #aabdf5;
+    background: #f5daaa;
     box-shadow: inset 0 0 6px;
     color: #222
 }
@@ -93,7 +93,7 @@
     box-shadow: 0 0 6px;
     user-select: none;
     padding: 8px 20px;
-    background: #aabdf5;
+    background: #f5daaa;
     margin: 30px 0 -20px 0;
     color: #000;
     justify-self: auto
@@ -105,12 +105,12 @@
 }
 
 .container.single-pokemon .back-btn:hover {
-    background: #c9d7ff;
+    background: #f1e2c9;
     color: #222
 }
 
 .container.single-pokemon .back-btn:active {
-    background: #aabdf5;
+    background: #f5daaa;
     box-shadow: inset 0 0 6px;
     color: #222
 }
