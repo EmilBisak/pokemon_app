@@ -2,8 +2,6 @@
 
 Tech Stack
 
--Create React App for development and test infrastructure
-
 Prerequisites
 
 -Node.js v8.2.1 or higher
