@@ -2,7 +2,7 @@
   "name": "pokemon_app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://emilbisak.github.io/pokemon_app",
+  "homepage": "https://emilbisak.github.io/pokemon_app",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.6.3",
