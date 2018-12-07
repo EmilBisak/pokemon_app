@@ -1,5 +1,6 @@
 const initialState = {
     pokemons: '',
+    filtered: null,
     singlePokemon: '',
     loading: true,
     isClicked: false,
@@ -12,6 +13,12 @@ export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_POKEMONS':
             return { ...state, pokemons: action.pokemons }
+
+        case 'SET_POKEMONS_BY_COLOR':
+            return { ...state, filtered: action.filtered, min: 0, max: 30 }
+
+        case 'SHOW_ALL_POKEMON':
+            return { ...state, filtered: null, min: 0, max: 30 }
 
         case 'SET_SINGLE_POKEMON':
             return { ...state, singlePokemon: action.pokemon }
@@ -44,7 +51,17 @@ export const reducer = (state = initialState, action) => {
 
 export const setPokemons = pokemons => ({
     type: 'SET_POKEMONS',
-    pokemons
+    pokemons,
+    filtered: pokemons
+})
+
+export const setPokemonsByColor = filtered => ({
+    type: 'SET_POKEMONS_BY_COLOR',
+    filtered
+})
+
+export const showAllPokemons = filtered => ({
+    type: 'SHOW_ALL_POKEMON',
 })
 
 export const setSinglePokemon = pokemon => ({
@@ -100,6 +117,18 @@ export const fetchSinglePokemon = (id) => dispatch => {
         .then(json => {
             dispatch(fetchSuccess())
             dispatch(setSinglePokemon(json))
+        })
+        .catch(e => dispatch(fetchFail(e)))
+}
+
+export const fetchPokemonsByColor = (id) => dispatch => {
+    dispatch(fetchStart());
+    return fetch(`https://cors-anywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon-color/${id}/`)
+        .then(res => res.json())
+        .then(json => {
+            dispatch(fetchSuccess())
+            dispatch(setPokemonsByColor(json))
+
         })
         .catch(e => dispatch(fetchFail(e)))
 }
