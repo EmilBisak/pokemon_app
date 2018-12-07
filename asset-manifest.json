@@ -1,0 +1,13 @@
+{
+  "main.css": "/pokemon_app/static/css/main.c5a26eaf.chunk.css",
+  "main.js": "/pokemon_app/static/js/main.7e43110d.chunk.js",
+  "main.js.map": "/pokemon_app/static/js/main.7e43110d.chunk.js.map",
+  "static/js/1.46e4e3af.chunk.js": "/pokemon_app/static/js/1.46e4e3af.chunk.js",
+  "static/js/1.46e4e3af.chunk.js.map": "/pokemon_app/static/js/1.46e4e3af.chunk.js.map",
+  "runtime~main.js": "/pokemon_app/static/js/runtime~main.740d8d43.js",
+  "runtime~main.js.map": "/pokemon_app/static/js/runtime~main.740d8d43.js.map",
+  "static/css/main.c5a26eaf.chunk.css.map": "/pokemon_app/static/css/main.c5a26eaf.chunk.css.map",
+  "index.html": "/pokemon_app/index.html",
+  "precache-manifest.ac32ac436ce2f6ab0c8a65e744f9b062.js": "/pokemon_app/precache-manifest.ac32ac436ce2f6ab0c8a65e744f9b062.js",
+  "service-worker.js": "/pokemon_app/service-worker.js"
+}
