@@ -9,8 +9,8 @@ import { changePage, previousPage, nextPage } from "../store/index";
 class Buttons extends Component {
 
     render() {
-        const { pokemons, filtered, isClicked, pokemonsPerPage, min, max, changePage, previousPage, nextPage } = this.props
-        const numsOfPages = Math.ceil((filtered ? filtered.pokemon_species.length : pokemons.results.length) / pokemonsPerPage);
+        const { pokemons, isClicked, pokemonsPerPage, min, max, changePage, previousPage, nextPage } = this.props
+        const numsOfPages = Math.ceil(pokemons.length / pokemonsPerPage);
 
         const makeButtons = () => {
             const buttonsJsx = [];
@@ -84,11 +84,11 @@ class Buttons extends Component {
                 </span>
                 <span className="pagination-btns" onClick={previousPage} style={!min ? hideBtn : showBtn}>&#171;</span>
                 {showBtns().numberBtns}
-                <span className="pagination-btns" onClick={nextPage} style={max === 930 ? hideBtn : showBtn}>&#187;</span>
+                <span className="pagination-btns" onClick={nextPage} style={max >= pokemons.length ? hideBtn : showBtn}>&#187;</span>
                 <span
                     className="pagination-btns change-ten-pages"
                     onClick={() => changePage(showBtns().nextTenPagesMin, showBtns().nextTenPagesMax)}
-                    style={!showBtns().nextText || (filtered ? filtered.pokemon_species.length : pokemons.results.length) < 300 ? hideBtn : showBtn}>{showBtns().nextText}&#187;
+                    style={!showBtns().nextText || pokemons.length < 300 ? hideBtn : showBtn}>{showBtns().nextText}&#187;
                 </span>
             </div>
         )
@@ -99,7 +99,6 @@ const mapStateToProps = state => {
     return {
         isClicked: state.isClicked,
         pokemons: state.pokemons,
-        filtered: state.filtered,
         pokemonsPerPage: state.pokemonsPerPage,
         min: state.min,
         max: state.max

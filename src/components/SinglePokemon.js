@@ -90,18 +90,32 @@ class SinglePokemon extends Component {
                         </div>
                     </div>
                     <div className="pokemon-stats">
-                        <h2 datatype="isClickedStat" onClick={this.showHide}>Stats</h2>
+                        <h2 datatype="isClickedStat" onClick={this.showHide}>
+                            Stats 
+                            <img
+                                src={isClickedStat ? 'assets/icons/expand-arrow.png' : 'assets/icons/expand-button.png'}
+                                alt='eye'
+                                onClick={this.showHide}
+                                datatype="isClickedStat" />
+                        </h2>
                         <div className="pokemon-stats-holder" style={isClickedStat ? { ...showPokemonDetails, gridTemplateColumns: '1fr 1fr' } : hidePokemonDetails}>
                             <p>Height : {singlePokemon.height}</p>
                             <p>Weight : {singlePokemon.weight}</p>
                             {isClickedStat ? statsJsx : null}
                         </div>
                     </div>
-                    <h2 datatype="isClickedMove" onClick={this.showHide}>moves</h2>
+                    <h2 datatype="isClickedMove" onClick={this.showHide}>
+                        moves 
+                        <img
+                            src={isClickedMove ? 'assets/icons/expand-arrow.png' : 'assets/icons/expand-button.png'}
+                            alt='eye'
+                            onClick={this.showHide}
+                            datatype="isClickedMove" />
+                    </h2>
                     <div className="pokemon-moves-holder" style={isClickedMove ? showPokemonDetails : hidePokemonDetails}>
                         {isClickedMove ? movesJsx : null}
                     </div>
-                    <Link to="/"><h3>Back</h3></Link>
+                    <Link to="/"><h3 className="back-btn">Back</h3></Link>
                 </div>
             </div>
         )
@@ -116,3 +130,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(SinglePokemon);
+

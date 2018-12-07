@@ -12,10 +12,23 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_POKEMONS':
-            return { ...state, pokemons: action.pokemons }
+            {
+                const pokemons = [];
+                action.pokemons.results.forEach(pokemon => pokemons.push(pokemon))
+                return { ...state, pokemons, min: 0, max: 30 }
+            }
+
+        case 'SET_FILTERED':
+            {
+                const filtered = [];
+                action.filtered.results.forEach(pokemon => filtered.push(pokemon))
+                return { ...state, filtered }
+            }
 
         case 'SET_POKEMONS_BY_COLOR':
-            return { ...state, filtered: action.filtered, min: 0, max: 30 }
+            const pokemonFilteredArr = [];
+            action.pokemons.pokemon_species.forEach(pokemon => pokemonFilteredArr.push(pokemon))
+            return { ...state, pokemons: pokemonFilteredArr, min: 0, max: 30 }
 
         case 'SHOW_ALL_POKEMON':
             return { ...state, filtered: null, min: 0, max: 30 }
@@ -44,6 +57,12 @@ export const reducer = (state = initialState, action) => {
         case 'NEXT_PAGE':
             return { ...state, min: state.min + 30, max: state.max + 30 }
 
+        case 'SEARCH_BY_NAME':
+            {
+                const pokemons = [...state.filtered].filter(pokemon => pokemon.name.toLowerCase().includes(action.letter.toLowerCase()))
+                return { ...state, pokemons, min: 0, max: 30 }
+            }
+
         default:
             return state
     }
@@ -51,16 +70,20 @@ export const reducer = (state = initialState, action) => {
 
 export const setPokemons = pokemons => ({
     type: 'SET_POKEMONS',
-    pokemons,
-    filtered: pokemons
+    pokemons
 })
 
-export const setPokemonsByColor = filtered => ({
-    type: 'SET_POKEMONS_BY_COLOR',
+export const setFiltered = filtered => ({
+    type: 'SET_FILTERED',
     filtered
 })
 
-export const showAllPokemons = filtered => ({
+export const setPokemonsByColor = pokemons => ({
+    type: 'SET_POKEMONS_BY_COLOR',
+    pokemons
+})
+
+export const showAllPokemons = () => ({
     type: 'SHOW_ALL_POKEMON',
 })
 
@@ -99,6 +122,11 @@ export const nextPage = () => ({
     type: 'NEXT_PAGE'
 })
 
+export const searchByName = (letter) => ({
+    type: 'SEARCH_BY_NAME',
+    letter,
+})
+
 export const fetchPokemons = () => dispatch => {
     dispatch(fetchStart());
     return fetch("https://pokeapi.co/api/v2/pokemon/")
@@ -106,6 +134,7 @@ export const fetchPokemons = () => dispatch => {
         .then(json => {
             dispatch(fetchSuccess())
             dispatch(setPokemons(json))
+            dispatch(setFiltered(json))
         })
         .catch(e => dispatch(fetchFail(e)))
 }

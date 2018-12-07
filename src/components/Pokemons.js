@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './Pokemons.css';
 import { openPokemonStyle, closePokemonStyle, showBtn, hideBtn } from "../shared/animationStyle";
-import { fetchSinglePokemon, fetchPokemonsByColor, showAllPokemons } from "../store/index";
+import { fetchSinglePokemon, fetchPokemons, fetchPokemonsByColor, searchByName } from "../store/index";
 import Buttons from "./Buttons";
 
 
@@ -14,58 +14,54 @@ class Pokemons extends Component {
 
     render() {
 
-        const { pokemons, filtered, isClicked, min, max, fetchSinglePokemon, fetchPokemonsByColor, showAllPokemons } = this.props
+        const { pokemons, isClicked, min, max, fetchSinglePokemon, fetchPokemons, fetchPokemonsByColor, searchByName } = this.props
         if (!pokemons) {
             return null
         }
 
         const makeColorBtns = () => {
-        const pokemonColors = [null, "black", "blue", "brown", "gray", "green", "pink", "purple", "red", "white", "yellow"]
-        let colorBtnsJsx = []
+            const pokemonColors = [null, "black", "blue", "brown", "gray", "green", "pink", "purple", "red", "white", "yellow"]
+            let colorBtnsJsx = []
 
-        pokemonColors.forEach((color, i) => {
-            if (color) {
-                colorBtnsJsx.push(<span key={color} className="color-btns" style={{ background: `${color}` }} onClick={() => fetchPokemonsByColor(i)}></span>)
-            }
-        })
+            pokemonColors.forEach((color, i) => {
+                if (color) {
+                    colorBtnsJsx.push(<span key={color} className="color-btns" style={{ background: `${color}` }} onClick={() => fetchPokemonsByColor(i)}></span>)
+                }
+            })
 
-        return colorBtnsJsx;
-    }
-
-
+            return colorBtnsJsx;
+        }
 
 
-        const pokemonsJsx = filtered
-            ?
-            filtered.pokemon_species
-                .filter((pokemon, i) => i >= min && i < max)
-                .map((pokemon, i) => (
-                    <Link key={pokemon.url.split("/")[6]} to={{ pathname: `/pokemon/${pokemon.name}` }}>
-                        <div onClick={() => fetchSinglePokemon(pokemon.url.split("/")[6])}>
-                            <h2>{pokemon.name}</h2>
-                            <img src={`assets/pokemon/${pokemon.url.split("/")[6] < 10090 ? pokemon.url.split("/")[6] : 'egg'}.png`} alt="pokemon" />
-                        </div>
-                    </Link>
-                ))
-            :
-            pokemons.results
-                .filter((pokemon, i) => i >= min && i < max)
-                .map((pokemon, i) => (
-                    <Link key={pokemon.url.split("/")[6]} to={{ pathname: `/pokemon/${pokemon.name}` }}>
-                        <div onClick={() => fetchSinglePokemon(pokemon.url.split("/")[6])}>
-                            <h2>{pokemon.name}</h2>
-                            <img src={`assets/pokemon/${pokemon.url.split("/")[6] < 10090 ? pokemon.url.split("/")[6] : 'egg'}.png`} alt="pokemon" />
-                        </div>
-                    </Link>
-                ))
+
+
+        const pokemonsJsx = pokemons
+            .filter((pokemon, i) => i >= min && i < max)
+            .map((pokemon, i) => (
+                <Link key={pokemon.url.split("/")[6]} to={{ pathname: `/pokemon/${pokemon.name}` }}>
+                    <div className="pokemon-wrapper" onClick={() => fetchSinglePokemon(pokemon.url.split("/")[6])}>
+                        <h2>{pokemon.name}</h2>
+                        <img src={`assets/pokemon/${pokemon.url.split("/")[6] < 10090 ? pokemon.url.split("/")[6] : 'egg'}.png`} alt="pokemon" />
+                    </div>
+                </Link>
+            ))
 
 
         return (
             <div className="wrapp" style={isClicked ? { minHeight: 'calc(140vh)' } : { minHeight: '0' }}>
                 <div className="container">
-                    <div className="filter-by-color" style={isClicked ? showBtn : hideBtn}>
-                        {makeColorBtns()}
-                        <div className="all-colors" onClick={showAllPokemons}></div>
+                    <input
+                        type="text"
+                        placeholder="Search pokemon by name"
+                        className="search-input"
+                        onChange={(e) => searchByName(e.target.value)}
+                        style={isClicked ? showBtn : hideBtn}
+                    />
+                    <div className="filter">
+                        <div className="filter-by-color clearfix" style={isClicked ? showBtn : hideBtn}>
+                            {makeColorBtns()}
+                            <div className="all-colors" onClick={fetchPokemons}></div>
+                        </div>
                     </div>
                     <div className="pokemon-holder" style={isClicked ? openPokemonStyle : closePokemonStyle}>
                         {pokemonsJsx}
@@ -80,7 +76,6 @@ class Pokemons extends Component {
 const mapStateToProps = state => {
     return {
         pokemons: state.pokemons,
-        filtered: state.filtered,
         loading: state.loading,
         isClicked: state.isClicked,
         min: state.min,
@@ -91,7 +86,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     fetchSinglePokemon,
     fetchPokemonsByColor,
-    showAllPokemons
+    fetchPokemons,
+    searchByName
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokemons);
