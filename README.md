@@ -1,8 +1,8 @@
-# Movie Datebase app
+# Pokemon App
 
 Tech Stack
 
--Create React App for development and test infrastructure -React for UI -Bootstrap 4 for layout
+-Create React App for development and test infrastructure
 
 Prerequisites
 
@@ -13,7 +13,7 @@ Getting Started Just clone the repo and start hacking:
 
 -$ git clone https://github.com/EmilBisak/pokemon_app.git
 
--$ cd movie-database
+-$ cd pokemon_app
 
 -$ npm install # Install project dependencies listed in package.json
 
