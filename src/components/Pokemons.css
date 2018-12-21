@@ -59,55 +59,43 @@
     height: 20px;
     border-radius: 3px; 
     margin: 5px 10px 5px 0;
-    border: 1px solid #cecece;
+    border: 1px solid rgba(255, 255, 255, .6);
     cursor: pointer;
 }
 
 .color-btns:hover {
+    border: 1px solid #989898;
+    box-shadow: 1px 1px 5px #000;
+}
+
+.color-btns:active {
     border: 1px solid #444;
+    box-shadow: none;
 }
 
 .all-colors {
     float: left;
-    width: 20px;
-    height: 20px;
-    background-color: rgb(255, 0, 0);
-    border-radius: 3px; 
-    margin: 5px 0;
-    border: 1px solid #cecece;
+    margin: 6px 0;
     cursor: pointer;
+    width: 0;
+    height: 0;
+    border-radius: 3px; 
+    border-top: 10px solid red;
+    border-right: 10px solid green;
+    border-bottom: 10px solid blue;
+    border-left: 10px solid yellow;
 }
 
 .all-colors:hover {
-    background-color: rgb(225, 0, 255);
+    box-shadow: 1px 1px 8px #444;
+    border-top: 10px solid #ff6b6b;
+    border-right: 10px solid #78b678;
+    border-bottom: 10px solid #6363ff;
+    border-left: 10px solid #ffff71;
 }
 
-.all-colors::before {
-    content: " ";
-    display: inline-block; 
-    position: relative;
-    left: 3px;
-    width: 7px;
-    height: 20px;
-    background-color: rgb(0, 255, 0);
-}
-
-.all-colors:hover::before {
-    background-color: rgb(255, 238, 0);
-}
-
-.all-colors:hover::after {
-    background-color: rgb(148, 148, 148);
-}
-
-.all-colors::after {
-    content: " ";
-    display: inline-block;
-    position: relative;
-    left: 3px; 
-    width: 7px;
-    height: 20px;
-    background-color: rgb(0, 0, 255);
+.all-colors:active {
+    box-shadow: none;
 }
 
 .pagination-btns {

@@ -18,7 +18,7 @@ class Pokemons extends Component {
         if (!pokemons || loading) {
             return <div className="wrapp single-pokemon" style={isClicked ? { minHeight: 'calc(60vh)' } : { minHeight: '0' }}>
                 <div className="container single-pokemon" style={isClicked ? openPokemonStyle : closePokemonStyle}>
-                <img src="assets/icons/loading.gif" />
+                <img src="assets/icons/loading.gif" alt="loading"/>
                 <h4>Loading...</h4>
                 </div>
             </div>

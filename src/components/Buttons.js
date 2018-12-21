@@ -14,13 +14,28 @@ class Buttons extends Component {
 
         const makeButtons = () => {
             const buttonsJsx = [];
-            for (let index = 1; index < numsOfPages; index++) {
+            for (let index = 1; index < numsOfPages + 1; index++) {
                 let nextMin = (index - 1) * pokemonsPerPage;
                 let nextMax = index * pokemonsPerPage;
                 let isWindowTabletSize = window.innerWidth < 600;
                 let otherPage = nextMin !== min;
                 let currentPage = nextMin === min;
-                buttonsJsx.push(<span className={isWindowTabletSize && otherPage ? "pagination-btns hide" : "pagination-btns"} key={nextMin} onClick={() => changePage(nextMin, nextMax)} style={currentPage ? { backgroundColor: "#ffb6b6" } : { backgroundColor: "#fff" }}>{index}</span>)
+
+                buttonsJsx
+                    .push(
+                        <span
+                            className={
+                                isWindowTabletSize && otherPage
+                                    ? "pagination-btns hide"
+                                    : "pagination-btns"}
+                            key={nextMin}
+                            onClick={() => changePage(nextMin, nextMax)}
+                            style={
+                                currentPage
+                                    ? { backgroundColor: "#ffb6b6", border: "1px solid #b8b8b8" }
+                                    : { backgroundColor: "#fff" }}>
+                            {index}
+                        </span>)
 
             }
             return buttonsJsx;
@@ -82,9 +97,23 @@ class Buttons extends Component {
                     onClick={() => changePage(showBtns().previousTenPagesMin, showBtns().previousTenPagesMax)}
                     style={!showBtns().previousText ? hideBtn : showBtn}>&#171;{showBtns().previousText}
                 </span>
-                <span className="pagination-btns" onClick={previousPage} style={!min ? hideBtn : showBtn}>&#171;</span>
+
+                <span
+                    className="pagination-btns"
+                    onClick={previousPage}
+                    style={!min ? hideBtn : showBtn}>&#171;
+                </span>
+
                 {showBtns().numberBtns}
-                <span className="pagination-btns" onClick={nextPage} style={max >= pokemons.length ? hideBtn : showBtn}>&#187;</span>
+
+                <span
+                    className="pagination-btns"
+                    onClick={nextPage}
+                    style={max >= pokemons.length
+                        ? hideBtn
+                        : showBtn}>&#187;
+                </span>
+
                 <span
                     className="pagination-btns change-ten-pages"
                     onClick={() => changePage(showBtns().nextTenPagesMin, showBtns().nextTenPagesMax)}
