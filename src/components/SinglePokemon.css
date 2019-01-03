@@ -60,15 +60,19 @@
     transition: all .6s;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: center
+    justify-items: center;
+    align-items: center;
 }
 
 .pokemon-image-holder img[alt="sprite"]{
     width: 130px;
+    cursor: url('../assets/eye.png'), pointer;
+    border: 2px solid #cecece;
+    border-radius: 10px;
 }
 
-.pokemon-image-holder img[alt="sprite"]{
-    cursor: url('../assets/eye.png'), pointer;
+.pokemon-image-holder img[alt="sprite"]:hover{
+    box-shadow: inset 0 0 170px -90px;
 }
 
 .pokemon-image-holder h4 {
@@ -84,8 +88,8 @@
 }
 
 .pokemon-types {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
 }
 
 .container.single-pokemon .back-btn {
