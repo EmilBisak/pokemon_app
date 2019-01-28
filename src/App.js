@@ -14,7 +14,7 @@ const root = document.querySelector('#root');
 class App extends Component {
 
   componentDidMount() {
-    this.props.fetchPokemons();
+    this.props.fetchPokemons(0);
   }
 
   render() {

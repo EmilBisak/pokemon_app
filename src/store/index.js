@@ -127,14 +127,16 @@ export const searchByName = (letter) => ({
     letter,
 })
 
-export const fetchPokemons = () => dispatch => {
+export const fetchPokemons = (offset) => dispatch => {
     dispatch(fetchStart());
-    return fetch("https://pokeapi.co/api/v2/pokemon/")
+    return fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=950`)
         .then(res => res.json())
         .then(json => {
             dispatch(fetchSuccess())
             dispatch(setPokemons(json))
             dispatch(setFiltered(json))
+            console.log("JSON", json);
+            
         })
         .catch(e => dispatch(fetchFail(e)))
 }
