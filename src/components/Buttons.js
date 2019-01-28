@@ -32,7 +32,7 @@ class Buttons extends Component {
                             onClick={() => changePage(nextMin, nextMax)}
                             style={
                                 currentPage
-                                    ? { backgroundColor: "#ffb6b6", border: "1px solid #b8b8b8" }
+                                    ? { backgroundColor: "#C32025", color: "rgb(215, 215, 215)" }
                                     : { backgroundColor: "#fff" }}>
                             {index}
                         </span>)

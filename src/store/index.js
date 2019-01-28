@@ -6,7 +6,8 @@ const initialState = {
     isClicked: false,
     pokemonsPerPage: 30,
     min: 0,
-    max: 30
+    max: 30,
+    showHideFilter: false
 };
 
 export const reducer = (state = initialState, action) => {
@@ -62,6 +63,10 @@ export const reducer = (state = initialState, action) => {
                 const pokemons = [...state.filtered].filter(pokemon => pokemon.name.toLowerCase().includes(action.letter.toLowerCase()))
                 return { ...state, pokemons, min: 0, max: 30 }
             }
+
+        case 'SHOW_FILTER':
+                return { ...state, showHideFilter: !state.showHideFilter }
+
 
         default:
             return state
@@ -125,6 +130,10 @@ export const nextPage = () => ({
 export const searchByName = (letter) => ({
     type: 'SEARCH_BY_NAME',
     letter,
+})
+
+export const showHideFilter = () => ({
+    type: 'SHOW_FILTER'
 })
 
 export const fetchPokemons = (offset) => dispatch => {
