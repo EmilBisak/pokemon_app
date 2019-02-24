@@ -13,6 +13,7 @@
 
 .container.single-pokemon h1 {
     margin: 0;
+    font-size: 1.7rem;
 }
 
 .container.single-pokemon h2 {
@@ -42,18 +43,17 @@
     margin-left: 5px;
 }
 
+.pokemon-stats-holder {
+    padding: 20px;
+    margin: 0 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
 .pokemon-moves-holder {
     transition: all .5s;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 2px;
-}
-
-.pokemon-stats-holder {
-    transition: all .6s;
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
 }
 
 .pokemon-image-holder {
@@ -64,7 +64,7 @@
     align-items: center;
 }
 
-.pokemon-image-holder img[alt="sprite"]{
+.pokemon-image-holder img[alt="sprite"] {
     width: 130px;
     cursor: url('../assets/eye.png'), pointer;
     border: 2px solid #cecece;
@@ -75,12 +75,70 @@
     margin: 0 0 10px 0;
 }
 
-.pokemon-stats{
+.pokemon-stats {
     margin-top: 20px;
 }
 
-.pokemon-stats h2, .pokemon-stats p{
+.pokemon-stats h2,
+.pokemon-stats p {
     margin-top: 0;
+}
+
+.stat-wrapper p {
+    margin: 0;
+    text-align: right;
+}
+
+.stat-holder {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-column-gap: 20px;
+    margin-bottom: 10px;
+}
+
+.stat-holder span:first-of-type {
+    align-self: end;
+}
+
+.progress {
+    height: 1rem;
+    width: 90%;
+    background-color: #e9ecef;
+    display: grid;
+    align-items: center;
+    border-radius: .25rem;
+}
+
+.progress > span {
+    position: relative;
+    top: -16px;
+    right: 5px;
+    text-align: right;
+}
+
+.progress-bar {
+    height: 1rem;
+    background-color: #ff6363;
+    border-radius: .25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress-bar span {
+    color: #fff;
+    font-size: .85rem;
+    text-shadow: 1px 1px #888;
+}
+
+.progress-bar .stat-min-max {
+    margin-left: 5px;
+    text-shadow: none;
+    font-size: 0.7rem;
+}
+
+.stat-min-max {
+    font-size: 0.7rem;
 }
 
 .pokemon-types {
@@ -114,5 +172,3 @@
     box-shadow: inset 0 0 6px;
     color: #222
 }
-
-

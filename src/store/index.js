@@ -144,8 +144,6 @@ export const fetchPokemons = (offset) => dispatch => {
             dispatch(fetchSuccess())
             dispatch(setPokemons(json))
             dispatch(setFiltered(json))
-            console.log("JSON", json);
-            
         })
         .catch(e => dispatch(fetchFail(e)))
 }

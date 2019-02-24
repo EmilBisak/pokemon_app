@@ -34,7 +34,7 @@ class SinglePokemon extends Component {
     }
     render() {
         const { isClicked, singlePokemon, loading } = this.props;
-        const { isClickedMove, isClickedStat } = this.state;
+        const { isClickedMove } = this.state;
 
         if (!singlePokemon || loading) {
             return <div className="wrapp single-pokemon" style={isClicked ? { minHeight: 'calc(60vh)' } : { minHeight: '0' }}>
@@ -68,18 +68,71 @@ class SinglePokemon extends Component {
             pokemonImages.length > 0 ? this.setState({ imgUrl: 1 }) : this.setState({ imgUrl: 0 })
         }
 
+        const matchPercentage = (stat) => {
+            let max = 0;
+            switch (stat.stat.name) {
+                case "speed":
+                    max = 160;
+                    break;
+
+                case "special-defense":
+                    max = 230;
+                    break;
+
+                case "special-attack":
+                    max = 173;
+                    break;
+
+                case "defense":
+                    max = 230;
+                    break;
+
+                case "attack":
+                    max = 181;
+                    break;
+
+                case "hp":
+                    max = 255;
+                    break;
+
+                default:
+                    max = 0;
+                    break;
+            }
+
+            let perc = stat.base_stat / max * 100;
+
+            return [perc, max]
+        }
+
+
         const typeJsx = singlePokemon.types.map((type, i) => {
             return <img key={type.type.name + i} title={type.type.name} src={`assets/types/${type.type.name}.png`} alt="type" className="pokemon-types" />
         })
 
         const statsJsx = singlePokemon.stats.map(stat => {
-            return <p key={stat.stat.name}><span>{stat.stat.name}: {stat.base_stat}</span></p>
+            return (
+                <div key={stat.stat.name} className="stat-wrapper">
+                    <div className="stat-holder">
+                        <span>{stat.stat.name}:</span>
+                        <div className="progress">
+                            <div className="progress-bar" style={{ width: `${matchPercentage(stat)[0]}%` }}>
+                                <span className="stat-min-max">0</span>
+                                <span>{stat.base_stat}</span>
+                                <span></span>
+                            </div>
+                            <span className="stat-min-max">{matchPercentage(stat)[1]}</span>
+                        </div>
+                    </div>
+                </div>
+            )
         })
 
         const movesJsx = singlePokemon.moves.map(move => {
             let moveName = move.move.name
             return <small key={moveName}>{moveName}, </small>
         })
+
 
         return (
             <div className="wrapp single-pokemon" style={isClicked ? { minHeight: 'calc(60vh)' } : { minHeight: '0' }}>
@@ -93,18 +146,34 @@ class SinglePokemon extends Component {
                         </div>
                     </div>
                     <div className="pokemon-stats">
-                        <h2 datatype="isClickedStat" onClick={this.showHide}>
-                            Stats
-                            <img
-                                src={isClickedStat ? 'assets/icons/expand-arrow.png' : 'assets/icons/expand-button.png'}
-                                alt='eye'
-                                onClick={this.showHide}
-                                datatype="isClickedStat" />
-                        </h2>
-                        <div className="pokemon-stats-holder" style={isClickedStat ? { ...showPokemonDetails, gridTemplateColumns: '1fr 1fr' } : hidePokemonDetails}>
-                            <p>Height : {singlePokemon.height}</p>
-                            <p>Weight : {singlePokemon.weight}</p>
-                            {isClickedStat ? statsJsx : null}
+                        <div className="pokemon-stats-holder">
+                            <div className="stat-wrapper">
+                                <div className="stat-holder">
+                                    <span>height:</span>
+                                    <div className="progress">
+                                        <div className="progress-bar" style={{ width: `${singlePokemon.height / 145 * 100}%` }}>
+                                            <span className="stat-min-max">0</span>
+                                            <span>{singlePokemon.height}</span>
+                                            <span></span>
+                                        </div>
+                                        <span className="stat-min-max">145</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="stat-wrapper">
+                                <div className="stat-holder">
+                                    <span>weight:</span>
+                                    <div className="progress">
+                                        <div className="progress-bar" style={{ width: `${singlePokemon.weight / 9999 * 100}%` }}>
+                                            <span className="stat-min-max">0</span>
+                                            <span>{singlePokemon.weight}</span>
+                                            <span></span>
+                                        </div>
+                                        <span className="stat-min-max">9999</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {statsJsx}
                         </div>
                     </div>
                     <h2 datatype="isClickedMove" onClick={this.showHide}>

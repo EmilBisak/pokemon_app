@@ -25,7 +25,6 @@ export const closePokemonStyle = {
 }
 
 export const showPokemonDetails = {
-    border: '1px solid #000',
     padding: '20px',
     margin: '0 20px',
 }
