@@ -65,9 +65,15 @@ class Pokemons extends Component {
                     />
                     <div className="filter">
                         <div className="filter-by-color clearfix" style={isClicked ? showBtn : hideBtn}>
-                        <h4>Filter Pokemons by color</h4>
-                            {makeColorBtns()}
-                            <div className="all-colors" onClick={fetchPokemons}></div>
+                            <h4>Filter Pokemons by color</h4>
+                            <div className="color-btns-holder">
+                                <div className="color-btns-wrapper">
+                                    {makeColorBtns()}
+                                </div>
+                                <div className="all-colors-holder">
+                                    <div className="all-colors" onClick={fetchPokemons}></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="pokemon-holder" style={isClicked ? openPokemonStyle : closePokemonStyle}>

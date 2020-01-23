@@ -34,6 +34,7 @@
     left: calc(50% - 60px);
     cursor: pointer;
     z-index: 3;
+    outline: none;
   }
 
 .logo:hover {
