@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/pokemon_app/static/js/runtime~main.12d8248b.js"
   },
   {
-    "revision": "ce0d5f2974684604ee13",
-    "url": "/pokemon_app/static/js/main.ce0d5f29.chunk.js"
+    "revision": "32dbf1becbfdc906f06d",
+    "url": "/pokemon_app/static/js/main.32dbf1be.chunk.js"
   },
   {
     "revision": "4dea5df18887afe0460b",
     "url": "/pokemon_app/static/js/2.4dea5df1.chunk.js"
   },
   {
-    "revision": "ce0d5f2974684604ee13",
-    "url": "/pokemon_app/static/css/main.50bfec15.chunk.css"
+    "revision": "32dbf1becbfdc906f06d",
+    "url": "/pokemon_app/static/css/main.65c7f5d2.chunk.css"
   },
   {
-    "revision": "1be9d8e382897a9fc59354a6c9390713",
+    "revision": "8f4aee83ae725eeb0ac5734eefbd815a",
     "url": "/pokemon_app/index.html"
   }
 ];
