@@ -8,7 +8,7 @@ import { changePage, previousPage, nextPage } from "../store/index";
 
 class Buttons extends Component {
     state = {
-        isWindowTabletSize: false
+        isWindowTabletSize: window.innerWidth < 600,
     }
 
     componentDidMount() {
